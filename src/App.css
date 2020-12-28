@@ -1,0 +1,65 @@
+.App {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.link {
+  display: flex;
+}
+
+.link__text {
+  background: lightgray;
+  padding: 0.5rem;
+}
+
+.link__button {
+  padding: 0.5rem;
+}
+
+.players {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.player {
+  background: lightgray;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mic {
+  background: grey;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.mic--active {
+  background: green;
+}
+
+.start {
+  font-weight: 600;
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 5px 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.start:hover {
+  background: lightgray;
+}
