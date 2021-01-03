@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
-import io from 'socket.io-client';
 import { Client } from "colyseus.js";
 import copy from "copy-text-to-clipboard";
 
 import TikTakToe from './games/TikTakToe';
 import Voice from './Voice';
 
-// const socket = io("ws://jugglz-api.herokuapp.com", {transports: ['websocket']});
-
-const client = new Client('ws://jugglz-game-server.herokuapp.com');
-// const client = new Client('ws://localhost:5000');
-// const client = new Client('ws://localhost:2567');
+const client = new Client('wss://jugglz-game-server.herokuapp.com');
 
 const getUserID = () => {
   let userID = window.localStorage.getItem("jugglz_userID");
