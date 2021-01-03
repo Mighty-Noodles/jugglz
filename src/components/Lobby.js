@@ -5,7 +5,7 @@ import copy from "copy-text-to-clipboard";
 import TikTakToe from './games/TikTakToe';
 import Voice from './Voice';
 
-const client = new Client('wss://jugglz-game-server.herokuapp.com');
+const client = new Client('https://jugglz-game-server.herokuapp.com');
 
 const getUserID = () => {
   let userID = window.localStorage.getItem("jugglz_userID");
