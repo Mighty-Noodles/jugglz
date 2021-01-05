@@ -30,29 +30,34 @@ function Lobby() {
   const lobbyID = window.location.pathname?.slice(1) || null;
   let intervalID;
 
-  useEffect(() => {
-    intervalID = setInterval(() => {
-      if (game && roomID) {
+  const checkRoom = () => fetch(`https://jugglz-api.herokuapp.com/lobby/${lobbyID}`)
+    .then(response => response.json())
+    .then(data => {
+      if (!data.success) {
+        setError("Room is expired.");
+        intervalID && clearInterval(intervalID);
         return;
       }
+      if (data.room.roomID) {
+        intervalID && clearInterval(intervalID);
+      }
+      if (game !== data.room.game) {
+        setGame(data.room.game);
+      }
+      if (roomID !== data.room.roomID) {
+        setRoomID(data.room.roomID);
+      }
+    })
+    .catch(() => setError("Connecting to room failed."));
 
-      fetch(`https://jugglz-api.herokuapp.com/lobby/${lobbyID}`) // TODO uncomment
-        .then(response => response.json())
-        .then(data => {
-          if (!data.success) {
-            setError("Room is expired.");
-            clearInterval(intervalID);
-            return;
-          }
-          if (data.room.roomID) {
-            clearInterval(intervalID);
-          }
+  useEffect(() => {
+    console.log({roomID, game});
+    if (game && roomID) {
+      return;
+    }
 
-          setGame(data.room.game);
-          setRoomID(data.room.roomID);
-        })
-        .catch(() => setError("Connecting to room failed."))
-    }, 5000);
+    checkRoom();
+    intervalID = setInterval(checkRoom, 5000);
   }, [game, roomID]);
 
   useEffect(() => {
