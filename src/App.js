@@ -1,10 +1,8 @@
 import Lobby from './components/Lobby';
 
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
+    <div>
       <Lobby />
     </div>
   );
