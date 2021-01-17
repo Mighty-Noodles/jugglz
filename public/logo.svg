@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="277px" height="321px" viewBox="0 0 277 321" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="0%" cy="50%" fx="0%" fy="50%" r="100%" gradientTransform="translate(0.000000,0.500000),scale(1.000000,1.012377),translate(-0.000000,-0.500000)" id="radialGradient-1">
+            <stop stop-color="#8B5CF6" offset="0%"></stop>
+            <stop stop-color="#8D60F6" offset="57.4168586%"></stop>
+            <stop stop-color="#A78BFA" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="12.0291462%" y1="82.7379497%" x2="82.3144317%" y2="12.4080517%" id="linearGradient-2">
+            <stop stop-color="#1E79E2" offset="0%"></stop>
+            <stop stop-color="#6A89F8" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-3" cx="80.79" cy="185.79" r="56.79"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="without-letterspacing" transform="translate(-1965.000000, -214.000000)">
+            <g id="Group-3" transform="translate(1943.000000, 165.000000)">
+                <g id="Group">
+                    <path d="M216.462648,22 L216.462648,22 C237.193955,22 254,38.806045 254,59.5373522 L254,272.872703 C254,305.553601 244.485835,330.864898 225.457221,348.807352 C207.228128,366.269205 181.64382,375 148.70353,375 L104.606875,375 C83.8371716,375 67,358.162828 67,337.393125 L67,337.393125 C67,316.623421 83.8371716,299.786249 104.606875,299.786249 L148.70353,299.786249 C161.65578,299.786249 170.050631,298.02407 173.888335,294.49966 C177.246325,291.135449 178.925296,283.926536 178.925296,272.872703 L178.925296,59.5373522 C178.925296,38.806045 195.731341,22 216.462648,22 Z" id="j" fill="#FFFFFF" fill-rule="nonzero" transform="translate(160.500000, 198.500000) rotate(20.000000) translate(-160.500000, -198.500000) "></path>
+                    <circle id="Oval" fill="url(#radialGradient-1)" transform="translate(80.790000, 185.790000) rotate(-45.000000) translate(-80.790000, -185.790000) " cx="80.79" cy="185.79" r="56.79"></circle>
+                </g>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Mask" fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

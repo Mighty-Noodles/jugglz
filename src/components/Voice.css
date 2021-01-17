@@ -1,4 +1,10 @@
-.link {
+.background{
+    background-image: url(../assets/background.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*.link {
     display: flex;
 }
 
@@ -63,3 +69,4 @@
 .start:hover {
     background: lightgray;
 }
+*/

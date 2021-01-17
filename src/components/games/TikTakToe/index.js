@@ -60,10 +60,20 @@ function TikTakToe({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoice
       return <h3>{error}</h3>;
     }
     if (connecting) {
-      return <h3>Connecting...</h3>;
+      return (
+      <div className="background h-screen w-screen text-white flex items-center justify-center flex-col bg-gray-900">
+        <img src="logo.svg" className="h-16"/>
+        <p className="mt-6">Connecting...</p>
+      </div>
+      );
     }
     if (!state) {
-      return <h3>Loading...</h3>;
+      return (
+      <div className="background h-screen w-screen text-white flex items-center justify-center flex-col bg-gray-900">
+        <img src="logo.svg" className="h-16"/>
+        <p className="mt-6">Loading...</p>
+      </div>
+      );
     }
     if (state.players.$items.size !== 2) {
       return <h3>Waiting for your opponent.</h3>;

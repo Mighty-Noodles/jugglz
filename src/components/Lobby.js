@@ -95,7 +95,9 @@ function Lobby() {
 
   if (loading) {
     return (
-      <h1>Loading...</h1>
+      <div className="background h-screen w-screen text-white flex items-center justify-center flex-col bg-gray-900">
+        <img src="logo.svg" className="h-16"/>
+      </div>
     );
   }
 
@@ -125,23 +127,28 @@ function Lobby() {
   }
 
   return (
-    <div>
-      <h1>Welcome to Lobby</h1>
-      <p>For joining game confirm that you are ready.</p>
+    <div className="background h-screen w-screen text-white flex items-center justify-center flex-col bg-gray-900">
+      <img src="logo-full.svg" className="h-8 mb-8"/>
+      <h1 className="text-2xl font-semibold">Welcome to Lobby</h1>
+      <p className="mt-1">For joining game confirm that you are ready.</p>
       {!ready
-        ? <button className="link__button" onClick={() => setReady(true)}>I'm ready</button>
+        ? <button className="bg-indigo-600 p-2 w-44 rounded-md mt-8 mb-28 transition duration-100 hover:bg-indigo-700" onClick={() => setReady(true)}>I'm ready</button>
         : (
           <div>
-            <button className="link__button" onClick={() => setReady(false)}>I'm not ready</button>
+            <button onClick={() => setReady(false)}>I'm not ready</button>
             <p>Waiting for opponent.</p>
           </div>
         )
       }
-      <p>Need to re-invite? Send the link of this session to your opponent.</p>
-      <p className="link__text">{window.location.href}</p>
-      <p>
-        <button className="link__button" onClick={() => copy(window.location.href)}>Copy</button>
-      </p>
+      <p className="text-sm font-light">Need to re-invite? Send the link of this session to your opponent.</p>
+      <div className="flex items-center mt-4 bg-gray-800 text-gray-200 p-2 rounded-lg">
+        <p className="text-sm font-semibold">{window.location.href}</p>
+        <button onClick={() => copy(window.location.href)}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }
