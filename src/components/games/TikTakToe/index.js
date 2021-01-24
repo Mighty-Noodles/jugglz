@@ -51,9 +51,10 @@ function TikTakToe({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoice
     });
 
     room.onMessage("voice_connection", (message) => {
+      console.log("voice_connection", message);
       onVoiceChange(message);
     });
-  }, [room]);
+  }, [room, onVoiceChange]);
 
   const renderContent = () => {
     if (error) {

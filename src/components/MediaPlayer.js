@@ -1,15 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import { useEffect } from "react";
 
 const MediaPlayer = (props) => {
-  const container = useRef(null);
-
-  // useEffect(() => {
-  //   if (!container.current) return;
-  //   props.videoTrack?.play(container.current);
-  //   return () => {
-  //     props.videoTrack?.stop();
-  //   };
-  // }, [container, props.videoTrack]);
   useEffect(() => {
     if (props.audioTrack) {
       props.audioTrack.play();
@@ -20,9 +11,7 @@ const MediaPlayer = (props) => {
       }
     };
   }, [props.audioTrack]);
-  return (
-    <div ref={container}  className="video-player"></div>
-  );
+  return null;
 }
 
 export default MediaPlayer;

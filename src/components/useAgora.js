@@ -8,18 +8,15 @@ export default function useAgora(client) {
 
   const [remoteUsers, setRemoteUsers] = useState([]);
 
-  async function createLocalTracks() {
-    const microphoneTrack = await AgoraRTC.createMicrophoneAudioTrack();
-    setLocalAudioTrack(microphoneTrack);
-    return microphoneTrack;
-  }
-
   async function join(appid, channel, token, uid) {
     if (!client) return;
-    const microphoneTrack = await createLocalTracks();
 
-    await client.join(appid, channel, token || null);
-    await client.publish([microphoneTrack]);
+    await client.join(appid, channel, token, uid);
+
+    const microphoneTrack = await AgoraRTC.createMicrophoneAudioTrack();
+    setLocalAudioTrack(microphoneTrack);
+
+    await client.publish(microphoneTrack);
 
     window.client = client;
 

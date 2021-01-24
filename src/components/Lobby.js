@@ -11,11 +11,11 @@ const getUserID = () => {
   let userID = window.localStorage.getItem("jugglz_userID");
 
   if (!userID) {
-    userID = Math.floor(Math.random()*100000000);
+    userID = Math.floor(Math.random()*1000000000);
     window.localStorage.setItem("jugglz_userID", userID);
   }
 
-  return userID;
+  return Number(userID);
 }
 
 function Lobby() {
@@ -109,7 +109,7 @@ function Lobby() {
     // if (game === "tik-tak-toe") {
     return (
       <div>
-        {voice && <Voice channel={voice.channel} token={voice.token} />}
+        {voice && <Voice channel={voice.channel} token={voice.token} uid={userID} />}
         <TikTakToe
           client={client}
           roomID={roomID}

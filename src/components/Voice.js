@@ -10,7 +10,7 @@ const APPID = '9a55f53bdf084e6f941ca3659be2db61';
 
 const client = AgoraRTC.createClient({ codec: 'h264', mode: 'rtc' });
 
-function Voice({ channel, token }) {
+function Voice({ channel, token, uid }) {
   const [ error, setError ] = useState("");
   const [ enabled, setEnabled ] = useState(true);
   const {
@@ -23,9 +23,23 @@ function Voice({ channel, token }) {
       return;
     }
 
-    join(APPID, channel, token)
+    join(APPID, channel, token, uid)
       .catch(() => setError("Connecting to voice room failed."));
   }, []);
+
+  useEffect(() => {
+    if (!localAudioTrack || !remoteUsers.length) {
+      return;
+    }
+
+    if(enabled && remoteUsers.length) {
+      localAudioTrack.play();
+      localAudioTrack.setEnabled(true);
+    } else {
+      localAudioTrack.stop();
+      localAudioTrack.setEnabled(false);
+    }
+  }, [enabled, remoteUsers, localAudioTrack]);
 
   if (error) {
     return (
@@ -51,17 +65,7 @@ function Voice({ channel, token }) {
       {localAudioTrack && (
         <div
           style={{ cursor: "pointer" }}
-          onClick={() => {
-          if(enabled) {
-            localAudioTrack.stop();
-            localAudioTrack.setEnabled(false);
-            setEnabled(false);
-          } else {
-            localAudioTrack.play();
-            localAudioTrack.setEnabled(true);
-            setEnabled(true);
-          }
-        }}>
+          onClick={() => setEnabled(!enabled)}>
           {enabled ? "mute" : "unmute"}
         </div>
       )}
