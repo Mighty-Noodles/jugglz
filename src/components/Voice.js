@@ -28,11 +28,18 @@ function Voice({ channel, token, uid }) {
   }, []);
 
   useEffect(() => {
-    if (!localAudioTrack || !remoteUsers.length) {
+    if (!localAudioTrack && !remoteUsers.length) {
+      return;
+    }
+    if (!localAudioTrack && remoteUsers.length) {
+      return;
+    }
+    if (localAudioTrack && !remoteUsers.length) {
+      localAudioTrack.stop();
       return;
     }
 
-    if(enabled && remoteUsers.length) {
+    if(enabled) {
       localAudioTrack.play();
       localAudioTrack.setEnabled(true);
     } else {
