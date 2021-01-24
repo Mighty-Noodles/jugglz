@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Client } from "colyseus.js";
 import copy from "copy-text-to-clipboard";
 
-import TikTakToe from './games/TikTakToe';
 import Voice from './Voice';
+
+import TikTakToe from './games/TikTakToe';
+import ConnectFour from './games/ConnectFour';
 
 const client = new Client('wss://jugglz-game-server.herokuapp.com');
 
@@ -106,22 +108,38 @@ function Lobby() {
   }
 
   if (lobbyID && game && ready) {
-    // if (game === "tik-tak-toe") {
-    return (
-      <div>
-        {voice && <Voice channel={voice.channel} token={voice.token} uid={userID} />}
-        <TikTakToe
-          client={client}
-          roomID={roomID}
-          lobbyID={lobbyID}
-          onRoomIDChange={saveRoom}
-          leaveRoom={() => setReady(false)}
-          onVoiceChange={data => setVoice(data)}
-          userID={userID}
-        />
-      </div>
-    );
-    // }
+    if (game === "tik-tak-toe") {
+      return (
+        <div>
+          {voice && <Voice channel={voice.channel} token={voice.token} uid={userID} />}
+          <TikTakToe
+            client={client}
+            roomID={roomID}
+            lobbyID={lobbyID}
+            onRoomIDChange={saveRoom}
+            leaveRoom={() => setReady(false)}
+            onVoiceChange={data => setVoice(data)}
+            userID={userID}
+          />
+        </div>
+      );
+    }
+    if (game === "connect-four") {
+      return (
+        <div>
+          {voice && <Voice channel={voice.channel} token={voice.token} uid={userID} />}
+          <ConnectFour
+            client={client}
+            roomID={roomID}
+            lobbyID={lobbyID}
+            onRoomIDChange={saveRoom}
+            leaveRoom={() => setReady(false)}
+            onVoiceChange={data => setVoice(data)}
+            userID={userID}
+          />
+        </div>
+      );
+    }
   }
 
   return (

@@ -1,5 +1,3 @@
-import "./Board.css";
-
 function Board({ board, onClick }) {
   const renderCell = (index) => {
     if (board[index] === 1) {

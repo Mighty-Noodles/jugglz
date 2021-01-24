@@ -3,7 +3,7 @@ import Board from "./Board";
 
 import "./index.css";
 
-function TikTakToe({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoiceChange, userID }) {
+function ConnectFour({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoiceChange, userID }) {
   const [connecting, setConnecting] = useState(true);
   const [room, setRoom] = useState(null);
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ function TikTakToe({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoice
       return;
     }
 
-    client.create("tic-tac-toe", { lobbyID, userID }).then(r => {
+    client.create("connect-four", { lobbyID, userID }).then(r => {
       setRoom(r);
       onRoomIDChange(r.id);
       setConnecting(false);
@@ -97,10 +97,10 @@ function TikTakToe({ roomID, lobbyID, leaveRoom, onRoomIDChange, client, onVoice
   }
 
   return (
-    <div className="tic-tac-toe">
+    <div className="connect-four">
       {renderContent()}
     </div>
   );
 }
 
-export default TikTakToe;
+export default ConnectFour;
